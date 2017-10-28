@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Videos
+<h2>Add</h2>
+
+<section>
+    <form asp-controller="Videos" asp-action="AddVideos" method="post" enctype="multipart/form-data">
+        <h1>Add Videos to GoogleCloud</h1>
+        <hr />
+        <br />
+        <h2>Choose one video to Upload </h2>
+        <br />
+        <div>
+            <label>Movie Title</label>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    @Html.TextBoxFor(title => title.Title)
+                    <input type="file" id="video" accept=".mp4" name="video"/>                               
+                    <input class="btn btn-success" type="submit" value="Upload" />
+                    </div>
+            }
+        </div>
+    </form>
+</section>

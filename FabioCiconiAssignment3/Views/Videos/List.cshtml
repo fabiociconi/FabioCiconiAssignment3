@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Videos
+<h2>List</h2>
+
+<section class="content">
+
+    <h1>Videos From GoogleCloud</h1>
+    <hr />
+    <br />
+    <!-- post -->
+    <div class="post">
+        @foreach (var item in ViewBag.Caralho)
+        {
+            <!-- post-inner -->
+        <div class="post-inner">
+
+            <header>
+                <h2> @Html.Label((string)item.Title)</h2>
+                <div class="cl">&nbsp;</div>
+            </header>
+            <div class="img-holder">
+                @*<img src="~/css/images/video.png" alt="">*@
+                <div>
+                    <video class="popuptext" preload="auto" id="myPopup" style="width:600px;" controls>
+                        <source id="myVideo" src="@item.GoogleUrl" type="video/mp4">
+                    </video>
+                    @*<input type="submit" onclick="playVid()" class="btn btn-primary" value="Play Preview" />
+                    <button id="play" onclick="playVid()">Play;</button>
+                    <input type="submit" onclick="pauseVid()" class="btn btn-danger" value="Stop Preview" />*@
+                </div>
+                <div>
+                    <form asp-controller="Videos" asp-action="DownloadVideo" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="@item.IdVideo" />
+                        <input type="hidden" name="fileName" value="@item.IdVideo" />
+                        @*@Html.ActionLink("Download", "DownloadVideo", new { fileName = item.IdVideo })*@
+                        <input class="btn btn-success" style="float:right" type="submit" value="Download" />
+                    </form>
+                </div>
+            </div>
+            @*@Html.Actionlink("Some_button_text", "ActionMethod", "Controller", "Optional parameter","html_code_you_want_to_apply_to_the_actionlink");*@
+            <div>
+                <form asp-controller="Videos" asp-action="AddCommenty" method="post">
+                    <input type="hidden" name="id" value="@item.IdVideo" />
+                    @*<input type="hidden" name="userId" value="@item.User" />*@
+                    @*<input class="btn btn-secondary" name="Desc" type="text" style="width:100%; height:80px;" />*@
+                    <textarea rows="4" cols="50" name="Desc" type="text" style="background-color: black;width:100%; resize: none;color:#fff;"></textarea>
+
+
+                    <input type="submit" class="btn btn-success" value="Comment" />
+
+
+
+                </form>
+            </div>
+
+
+            <div>
+                <h4>Commentaries</h4>
+
+                @foreach (var com in item.ListComm)
+                    {
+                    <br />
+                    <div class="meta">
+                        <p>
+                            <hr />
+                            @com.Desc
+                            <br />
+                            <br />
+                            <span>by  </span>@com.User
+                            <hr />
+                        </p>
+                    </div>
+                    }
+            </div>
+            <!-- meta -->
+            <div class="meta">
+                <p class="date">October 26, 2017 by <a href="#">Fabio Ciconi</a></p>
+
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of meta -->
+        </div>
+                <!-- post-inner -->
+        }
+    </div>
+    <!-- end of post -->
+    <hr />
+    <br />
+    <h3>Total Videos:</h3>  @ViewBag.Caralho.Count
+    <hr />
+    <br />
+    <div class="pagination">
+        <ul>
+            <li class="laquo"><a href="#"><span></span></a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li class="raquo"><a href="#"><span></span></a></li>
+            <li><a href="#">10</a></li>
+            <li class="dots">. . .</li>
+            <li><a href="#">last</a></li>
+        </ul>
+    </div>
+
+    <script  type="text/javascript">
+        var video = document.getElementById("myVideo");
+
+        video.addEventListener('play', function (e) { // Repeat this for other events
+            // The video is playing
+            statelabel.innerHTML = "Playing";
+        });
+
+        //function playVid() {
+
+        //    video.load();
+        //    fetchVideoAndPlay();
+        //    //video.play();
+
+        //}
+        //function pauseVid() {
+        //    video.pause();
+        //}
+    </script>
+
+
+</section>

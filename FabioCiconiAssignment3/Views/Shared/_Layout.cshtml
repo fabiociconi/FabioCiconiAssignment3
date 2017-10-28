@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FabioCiconiAssignment3</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="shortcut icon" type="~/image/x-icon" href="~/css/images/favicon.ico">
+        <link href="~/css/style.css" rel="stylesheet" />
+        <link href="~/css/colorbox.css" rel="stylesheet" />
+        <script src="~/js/functions.js"></script>
+        <script src="~/js/jquery-1.8.0.min.js"></script>
+        <script src="~/js/jquery.colorbox-min.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body>
+     <!-- wrapper -->
+    <div id="wrapper">
+        <div class="light-bg">
+            <!-- shell -->
+            <div class="shell">
+                <!-- header -->
+                <div class="header">
+                    <h1 id="logo">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Fabio Ciconi Videos</a>
+                    </h1>
+                    <!-- navigation -->
+                    <div class="navbar-collapse collapse">
+                        <nav id="navigation">
+                            <ul>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li><a asp-area="" asp-controller="Login" asp-action="Index">Login</a></li>
+                          
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- end of navigation -->
+                    <div class="cl">&nbsp;</div>
+                </div>
+                <!-- end of header -->
+                <!-- main -->
+                <div class="main">
+                    <!-- content -->
+                    <section class="content">
+                        @RenderBody()
+                    </section>
+                    <!-- end of content -->
+                    <!-- sidebar -->
+                    <aside class="sidebar">
+                        <div class="widget">
+                            <h3 class="widgettitle">Options</h3>
+                            <ul>
+                                <li><a asp-area="" asp-controller="Videos" 
+                                       asp-action="Add">Upload Videos</a></li>
+                                <li><a asp-area="" asp-controller="Videos" 
+                                       asp-action="List">Download Videos</a></li>
+                            </ul>
+                        </div>
+                        <div class="widget socials-widget">
+                            <h3 class="widgettitle">Get Connected</h3>
+                            <ul>
+                                <li><a href="#" class="facebook-ico"><span></span>Facebook</a></li>
+                                <li><a href="#" class="twitter-ico"><span></span>Twitter</a></li>
+                                <li><a href="#" class="linkedin-ico"><span></span>Linkedin</a></li>
+                                <li><a href="#" class="you-tube-ico"><span></span>Youtube</a></li>                           
+                            </ul>
+                        </div>
+                    </aside>
+                    <!-- end of sidebar -->
+                    <div class="cl">&nbsp;</div>
+                </div>
+                <div class="footer">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </nav>
+                    <p class="copy">Copyright &copy; 2012 <span>|</span> Sitename. Design by <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>
+                </div>
+            </div>
+            <!-- end of shell -->
+        </div>
+    </div>
+    <!-- end of wrapper -->
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
